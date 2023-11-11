@@ -10,7 +10,7 @@ export class TasksService {
   }
 
   async findAll(): Promise<Task[]> {
-    return this.prisma.task.findMany();
+    return this.prisma.task.findMany({ where: { deletedAt: null } });
   }
 
   async findById(id: number): Promise<Task> {
@@ -38,7 +38,11 @@ export class TasksService {
     return this.prisma.task.update({ where: { id }, data: task });
   }
 
+  /** NOTE: 論理削除 */
   async delete(id: number): Promise<Task> {
-    return this.prisma.task.delete({ where: { id } });
+    return this.prisma.task.update({
+      where: { id },
+      data: { deletedAt: new Date() },
+    });
   }
 }
