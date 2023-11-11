@@ -45,4 +45,12 @@ export class TasksService {
       data: { deletedAt: new Date() },
     });
   }
+
+  /** タスクを完了する */
+  async complete(id: number): Promise<Task> {
+    return this.prisma.task.update({
+      where: { id },
+      data: { completedAt: new Date() },
+    });
+  }
 }

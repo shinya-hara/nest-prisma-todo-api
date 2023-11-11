@@ -47,4 +47,9 @@ export class TasksController {
   delete(@Param('id') id: string) {
     return this.tasksService.delete(Number(id));
   }
+
+  @Put(':id/complete')
+  complete(@Param('id') id: string) {
+    return this.tasksService.complete(Number(id));
+  }
 }
