@@ -12,4 +12,8 @@ export class TasksService {
   async findAll(): Promise<Task[]> {
     return this.prisma.task.findMany();
   }
+
+  async findById(id: number): Promise<Task> {
+    return this.prisma.task.findUnique({ where: { id } });
+  }
 }
