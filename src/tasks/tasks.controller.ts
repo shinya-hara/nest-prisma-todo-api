@@ -35,9 +35,6 @@ export class TasksController {
     task: {
       title?: string;
       content?: string;
-      completedAt?: Date | null;
-      deletedAt?: Date | null;
-      userId?: number;
     },
   ) {
     return this.tasksService.update(Number(id), task);

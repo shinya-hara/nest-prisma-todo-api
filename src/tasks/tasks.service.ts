@@ -30,9 +30,6 @@ export class TasksService {
     task: {
       title?: string;
       content?: string;
-      completedAt?: Date | null;
-      deletedAt?: Date | null;
-      userId?: number;
     },
   ): Promise<Task> {
     return this.prisma.task.update({ where: { id }, data: task });
